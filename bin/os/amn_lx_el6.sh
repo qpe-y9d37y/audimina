@@ -287,6 +287,7 @@ fi
 IFS=$'\n'
 for GROUP in $(yum grouplist | sed 's/^[[:alnum:]]/\n&/' | awk -v RS='' "/Installed Groups/" | tail -n +2 | sed 's/^[ \t]*//'); do
   PKG_GRPS+=( "${GROUP}" )
+done
 IFS=${DEF_IFS}
 
 # Enabled repos.
