@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ########################################################################
-# Bash script                                            Quentin Petit #
+# MIT License                             Copyright 2020 Quentin Petit #
 # May 2020                                 <qpe-y9d37y@protonmail.com> #
 #                                                                      #
 #                             amn_lx_el8.sh                            #
