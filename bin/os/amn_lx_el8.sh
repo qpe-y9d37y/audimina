@@ -152,10 +152,10 @@ else
 fi
 
 # Known host keys.
-if [[ $(find -xdev $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -type f -name "known_hosts" | wc -l) == 0 ]]; then
+if [[ $(find $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -xdev -type f -name "known_hosts" | wc -l) == 0 ]]; then
   KNOWN_HOSTS_FILES="none"
 else
-  for KNOWN_HOSTS in $(find -xdev $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -type f -name "known_hosts"); do
+  for KNOWN_HOSTS in $(find $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -xdev -type f -name "known_hosts"); do
     KNOWN_HOSTS_FILE=$(echo ${KNOWN_HOSTS} | tr "/" "-" | cut -c 2-)
     cp ${KNOWN_HOSTS} ${DIR_TMP_FIL}/${KNOWN_HOSTS_FILE}
     KH_PATH=$(dirname ${KNOWN_HOSTS})
@@ -167,10 +167,10 @@ else
 fi
 
 # Authorized SSH keys.
-if [[ $(find -xdev $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -type f -name "authorized_keys" 2>/dev/null | wc -l) == 0 ]]; then
+if [[ $(find $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -xdev -type f -name "authorized_keys" 2>/dev/null | wc -l) == 0 ]]; then
   AUTH_KEYS_FILES="none"
 else
-  for AUTH_KEYS in $(find -xdev $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -type f -name "authorized_keys" 2>/dev/null); do
+  for AUTH_KEYS in $(find $(eval df -ThP ${EXC_FS_TYPE} | tail -n +2 | awk '{print $7}' | tr "\n" " ") -xdev -type f -name "authorized_keys" 2>/dev/null); do
     AUTH_KEYS_FILE=$(echo ${AUTH_KEYS} | tr "/" "-" | cut -c 2-)
     cp ${AUTH_KEYS} ${DIR_TMP_FIL}/${AUTH_KEYS_FILE}
     AK_PATH=$(dirname ${AUTH_KEYS})
