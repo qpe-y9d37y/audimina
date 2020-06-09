@@ -56,9 +56,11 @@ function file_select {
       FIL_INI_CRON="${DIR_INI}/crn_lx_${DISTRIB}.txt"
     ;;
     AIX)
-      AMN_SCRIPT="${DIR_BIN}/os/amn_ux_aix.ksh"
-      FIL_INI_PKG=""
-      FIL_INI_CRON=""
+      echo -e "[\e[91merror\e[0m] ${OS} is not yet supported, bye." > /dev/tty
+      exit 1
+#      AMN_SCRIPT="${DIR_BIN}/os/amn_ux_aix.ksh"
+#      FIL_INI_PKG=""
+#      FIL_INI_CRON=""
     ;;
     *)
       echo -e "[\e[91merror\e[0m] ${OS} is not supported, bye." > /dev/tty
@@ -207,6 +209,8 @@ else
 
     elif [[ ${REMOTE_OS} == "AIX" ]]; then
 
+      REMOTE_DISTRIB=false
+
       # If OS is AIX, check if VIOS.
       if $(ssh -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes -l ${REMOTE_USR} ${REMOTE_SRV} "ls /usr/ios/cli/ioscli") ]]; then
         REMOTE_OS="VIOS"
@@ -223,6 +227,10 @@ else
     ssh -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes -tt -l ${REMOTE_USR} ${REMOTE_SRV} \
       "sudo mkdir -p ${DIR_TMP}/files"
 
+    # Set REMOTE_USR as owner of DIR_TMP
+    ssh -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes -tt -l ${REMOTE_USR} ${REMOTE_SRV} \
+      "sudo chown -R ${REMOTE_USR} ${DIR_TMP}"
+
     # Send files to REMOTE_SRV.
     for FILE in ${AMN_SCRIPT} ${FIL_INI_PKG} ${FIL_INI_CRON} ${SCR_MK_INI}; do
       scp -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes ${FILE} ${REMOTE_USR}@${REMOTE_SRV}:${DIR_TMP}/
@@ -235,6 +243,10 @@ else
     # Launch script.
     ssh -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes -tt -l ${REMOTE_USR} ${REMOTE_SRV} \
       "sudo ${DIR_TMP}/$(basename ${AMN_SCRIPT})"
+
+    # Set REMOTE_USR as owner of all files under DIR_TMP
+    ssh -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes -tt -l ${REMOTE_USR} ${REMOTE_SRV} \
+      "sudo chown -R ${REMOTE_USR} ${DIR_TMP}"
 
     # Get output files.
     mkdir -p ${DIR_OUT}/${REMOTE_SRV}/
