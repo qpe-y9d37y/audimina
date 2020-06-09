@@ -27,6 +27,8 @@
 # Files and directories.
 DIR_TMP="/tmp/audimina"
 DIR_TMP_FIL="${DIR_TMP}/files"
+DIR_TMP_LOG="${DIR_TMP}/logs"
+FIL_TMP_LOG="${DIR_TMP_LOG}/$(basename $0).log"
 FIL_INI_PKG="${DIR_TMP}/pkg_lx_el7.txt"
 FIL_INI_CRON="${DIR_TMP}/crn_lx_el7.txt"
 SCR_MK_INI="${DIR_TMP}/amn_mk_ini.sh"
@@ -55,6 +57,14 @@ EXC_FS_TYPE="-x tmpfs -x devtmpfs -x nfs"
 #                                                                      #
 #                               BEGINNING                              #
 #                                                                      #
+
+# Start logging.
+if [[ ! -d ${DIR_LOG} ]]; then
+  mkdir ${DIR_LOG}
+fi
+date > ${FIL_LOG}
+exec 2>> ${FIL_LOG} 1>> ${FIL_LOG}
+set -x
 
 # Identification.
 SRVNAME=$(hostname -s)
