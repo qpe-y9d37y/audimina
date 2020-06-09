@@ -288,6 +288,7 @@ fi
 IFS=$'\n'
 for GROUP in $(dnf group list -q --installed | tail -n +2); do
   PKG_GRPS+=( "${GROUP}" )
+done
 IFS=${DEF_IFS}
 
 # Enabled repos.
