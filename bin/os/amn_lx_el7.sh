@@ -130,14 +130,14 @@ done
 if [[ $(cat /etc/passwd | egrep -v ${DEF_SYS_USR} | wc -l) == 0 ]]; then
   USR_LOCAL="none"
 else
-  for USER in $(cat /etc/passwd | egrep -v ${DEF_SYS_USR} | awk -F':' '{print $1}'); do
-    UID=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $3}')
-    GID=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $4}')
-    GECOS=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $5}')
-    HOME_DIR=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $6}')
-    SHELL=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $7}')
-    GROUPS=$(id ${USER} | awk '{print $3}' | awk -F'=' '{print $2}')
-    USR_LOCAL+=( "${USER} : { uid = ${UID}, gid = ${GID}, gecos = ${GECOS}, home_dir = ${HOME_DIR}, shell = ${SHELL}, groups = ${GROUPS} }" )
+  for LOCAL_USR in $(cat /etc/passwd | egrep -v ${DEF_SYS_USR} | awk -F':' '{print $1}'); do
+    USR_UID=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $3}')
+    USR_GID=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $4}')
+    USR_GECOS=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $5}')
+    USR_HOME_DIR=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $6}')
+    USR_SHELL=$(grep "^${USER}:" /etc/passwd | awk -F':' '{print $7}')
+    USR_GROUPS=$(id ${USER} | awk '{print $3}' | awk -F'=' '{print $2}')
+    USR_LOCAL+=( "${LOCAL_USR} : { uid = ${USR_UID}, gid = ${USR_GID}, gecos = ${USR_GECOS}, home_dir = ${USR_HOME_DIR}, shell = ${USR_SHELL}, groups = ${USR_GROUPS} }" )
   done
 fi
 if [[ $(cat /etc/group | egrep -v ${DEF_SYS_GRP} | wc -l) == 0 ]]; then
