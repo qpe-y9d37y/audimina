@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 ########################################################################
-# Python 3                                               Quentin Petit #
+# MIT License                             Copyright 2020 Quentin Petit #
 # May 2020                                 <qpe-y9d37y@protonmail.com> #
 #                                                                      #
 #                              trinity.py                              #
