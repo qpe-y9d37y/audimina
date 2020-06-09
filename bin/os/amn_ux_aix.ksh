@@ -1,7 +1,7 @@
 #!/bin/ksh
 
 ########################################################################
-# KSH script                                             Quentin Petit #
+# MIT License                             Copyright 2020 Quentin Petit #
 # May 2020                                  <quentin.petit@sogeti.com> #
 #                                                                      #
 #                            amn_ux_aix.ksh                            #
