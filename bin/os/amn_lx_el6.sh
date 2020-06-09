@@ -42,7 +42,7 @@ DEF_CRON_W=""
 DEF_CRON_M=""
 
 # Exclusions.
-EXC_FS_TYPE="-x tmpfs"
+EXC_FS_TYPE="-x tmpfs -x nfs"
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #                                                                      #
