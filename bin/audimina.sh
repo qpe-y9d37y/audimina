@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ########################################################################
-# Bash script                                            Quentin Petit #
+# MIT License                             Copyright 2020 Quentin Petit #
 # May 2020                                 <qpe-y9d37y@protonmail.com> #
 #                                                                      #
 #                              audimina.sh                             #
@@ -9,8 +9,7 @@
 # Current version: 2.0                                                 #
 # Status: Work in progress                                             #
 #                                                                      #
-# This script purpose it to audit Linux/UNIX servers. Work loosely     #
-# based on Quentin Mercier's work <q.mercier@live.fr>.                 #
+# This script purpose it to audit Linux/UNIX servers.                  #
 #                                                                      #
 # Version history:                                                     #
 # +----------+------------+------+-----------------------------------+ #
