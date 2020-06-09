@@ -250,9 +250,10 @@ else
       "sudo chown -R ${REMOTE_USR} ${DIR_TMP}"
 
     # Get output files.
-    mkdir -p ${DIR_OUT}/${REMOTE_SRV}/
+    mkdir -p ${DIR_OUT}/${REMOTE_SRV}/logs
     scp -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes ${REMOTE_USR}@${REMOTE_SRV}:${DIR_TMP}/amn_*.ini ${DIR_OUT}/
     scp -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes ${REMOTE_USR}@${REMOTE_SRV}:${DIR_TMP}/files/* ${DIR_OUT}/${REMOTE_SRV}/
+    scp -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes ${REMOTE_USR}@${REMOTE_SRV}:${DIR_TMP}/logs/* ${DIR_OUT}/${REMOTE_SRV}/logs/
 
     # Retrieve name of INI file.
     INI_FILE=$(ssh -o StrictHostKeyChecking=no -o ConnectTimeout=3 -o BatchMode=yes -tt -l ${REMOTE_USR} ${REMOTE_SRV} "ls ${DIR_TMP}/amn_*.ini")
