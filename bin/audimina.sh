@@ -6,7 +6,7 @@
 #                                                                      #
 #                              audimina.sh                             #
 #                                                                      #
-# Current version: 2.0                                                 #
+# Current version: 2.1                                                 #
 # Status: Work in progress                                             #
 #                                                                      #
 # This script purpose it to audit Linux/UNIX servers.                  #
@@ -18,6 +18,7 @@
 # | 20131010 | Quentin M. | 1.0  | First version                     | #
 # | 20140102 | Quentin M. | 1.3  | Bugfix                            | #
 # | 20200511 | Quentin P. | 2.0  | Split audimina per OS/distrib     | #
+# | 20200609 | Quentin P. | 2.1  | Change ownership of DIR_TMP       | #
 # +----------+------------+------+-----------------------------------+ #
 #                                                                      #
 ########################################################################
