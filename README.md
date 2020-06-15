@@ -5,27 +5,27 @@ AUDIMINA is an UNIX/Linux auditing tool.
 ## File tree
 
 ```
-audimina\
+audimina/
 |-- LICENSE
 |-- README.md
-|-- bin\
+|-- bin/
 |   |-- audimina.sh
-|   |-- os\
+|   |-- os/
 |   |   |-- amn_lx_el6.sh
 |   |   |-- amn_lx_el7.sh
 |   |   |-- amn_lx_el8.sh
 |   |   `-- amn_ux_aix.ksh
-|   |-- util\
+|   |-- util/
 |   |   |-- amn_mk_ini.sh
 |   |   `-- trinity.py
-|-- ini\
+|-- ini/
 |   |-- pkg_lx_el6.txt
 |   |-- pkg_lx_el7.txt
 |   |-- pkg_lx_el8.txt
 |   |-- crn_lx_el6.txt
 |   |-- crn_lx_el7.txt
 |   `-- crn_lx_el8.txt
-`-- out\
+`-- out/
 ```
 
 ## Usage
